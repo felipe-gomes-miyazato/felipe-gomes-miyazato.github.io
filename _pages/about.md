@@ -10,8 +10,13 @@ profile:
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>Parque Continental</p>
-    <p>Zona Oeste \u00A0</p>
-    <p>São Paulo - SP</p>
+    <p>
+      Zona Oeste
+    </p>
+
+    <p>
+      São Paulo - SP
+    </p>
 
 news: false #true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
