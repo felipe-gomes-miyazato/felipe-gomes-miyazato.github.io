@@ -10,7 +10,7 @@ profile:
   image_circular: false # crops the image to make it circular
   more_info: >
     <p>Parque Continental</p>
-    <p>Zona Oeste <br/></p>
+    <p>Zona Oeste \</p>
     <p>São Paulo - SP</p>
 
 news: false #true  # includes a list of news items
