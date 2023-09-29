@@ -2,16 +2,16 @@
 layout: about
 title: about
 permalink: /
-subtitle: Parque Continental, São Paulo - SP, Zona Sul. Contacts. Moto. Etc.
+subtitle: Physicist and data specialist. felipe.miyazato@outlook.com
 
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>Parque Continental</p>
+    <p>Zona Oeste</p>
+    <p>São Paulo - SP</p>
 
 news: false #true  # includes a list of news items
 latest_posts: true  # includes a list of the newest posts
