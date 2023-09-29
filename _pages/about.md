@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
+subtitle: Parque Continental, São Paulo - SP, Zona Sul. Contacts. Moto. Etc.
 
 profile:
   align: right
