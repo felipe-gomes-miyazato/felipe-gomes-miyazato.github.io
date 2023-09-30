@@ -80,6 +80,17 @@ def lambda_handler(event, context):
     Necessário o preenchimento das variáveis de ambiente da lambda com o conteúdo de <code>kaggle.json</code>. Instruções detalhadas disponíveis na documentação da API do kaggle.
 </div>
 
+Configure the test JSON event like:
+
+{% highlight json linenos %}
+
+{
+  "kaggle_dataset_url": "https://www.kaggle.com/datasets/aliceadativa/queimadas-brasil-2020/download?datasetVersionNumber=2",
+  "bucket_name": "seu-nome-bucket"
+}
+
+{% endhighlight %}
+
 ## Customizing Your Table of Contents
 {:data-toc-text="Customizing"}
 
