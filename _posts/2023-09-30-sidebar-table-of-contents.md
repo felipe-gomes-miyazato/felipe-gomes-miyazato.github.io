@@ -35,39 +35,59 @@ Esta Lambda age apenas como uma proxy, para disponibilizar os dados em um bucket
 
 {% highlight python linenos %}
 
-import boto3
-import kaggle
 import os
+import requests
+import boto3
+from botocore.exceptions import NoCredentialsError
 
 def lambda_handler(event, context):
     # Get the Kaggle dataset URL and bucket name from the event object
     kaggle_dataset_url = event['kaggle_dataset_url']
     bucket_name = event['bucket_name']
 
-    # Configure Kaggle
-    kaggle.api.authenticate()
-
-    # Download dataset from Kaggle
-    kaggle.api.dataset_download_files(kaggle_dataset_url, path='/tmp', unzip=True)
-
-    # Get the list of downloaded files
-    files = os.listdir('/tmp')
-
-    # Create a session using your user credentials
-    session = boto3.Session()
-
-    # Create an S3 client
-    s3 = session.client('s3')
-
-    # For each file, upload it to the S3 bucket
-    for file in files:
-        with open(f'/tmp/{file}', 'rb') as data:
-            s3.upload_fileobj(data, bucket_name, file)
-
-    return {
-        'statusCode': 200,
-        'body': f'Successfully uploaded {len(files)} files to S3 bucket'
+    # Get the Kaggle username and key from environment variables
+    kaggle_info = {
+        'username': os.environ.get('username'),
+        'key': os.environ.get('key')
     }
+
+    # Make the GET request
+    response = requests.get(kaggle_dataset_url, auth=(kaggle_info['username'], kaggle_info['key']))
+
+    # Check if the request was successful
+    if response.status_code == 200:
+        # Write the dataset to a file
+        with open('/tmp/dataset.zip', 'wb') as f:
+            f.write(response.content)
+        
+        # Create an S3 client
+        s3 = boto3.client('s3')
+
+        # Specify the file name
+        file_name = 'dataset.zip'
+
+        # Upload the file to S3
+        try:
+            s3.upload_file('/tmp/' + file_name, bucket_name, file_name)
+            return {
+                'statusCode': 200,
+                'body': 'Successfully uploaded dataset to S3 bucket'
+            }
+        except FileNotFoundError:
+            return {
+                'statusCode': 404,
+                'body': 'The file was not found'
+            }
+        except NoCredentialsError:
+            return {
+                'statusCode': 401,
+                'body': 'Credentials not available'
+            }
+    else:
+        return {
+            'statusCode': response.status_code,
+            'body': 'Request to Kaggle API failed'
+        }
 
 {% endhighlight %}
 
@@ -90,6 +110,15 @@ Configure the test JSON event like:
 }
 
 {% endhighlight %}
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-09-30 122908.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Para usar o pacote requests, há uma <a href="https://github.com/keithrozario/Klayers/tree/master">layer pública disponível</a>.
+</div>
 
 ## Customizing Your Table of Contents
 {:data-toc-text="Customizing"}
