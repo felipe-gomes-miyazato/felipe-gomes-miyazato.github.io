@@ -31,7 +31,7 @@ Esta Lambda age apenas como uma proxy, para disponibilizar os dados em um bucket
     </div>
 </div>
 
-### Código da Lambda
+### Código e configuração da Lambda
 
 {% highlight python linenos %}
 
@@ -40,11 +40,15 @@ import kaggle
 import os
 
 def lambda_handler(event, context):
+    # Get the Kaggle dataset URL and bucket name from the event object
+    kaggle_dataset_url = event['kaggle_dataset_url']
+    bucket_name = event['bucket_name']
+
     # Configure Kaggle
     kaggle.api.authenticate()
 
     # Download dataset from Kaggle
-    kaggle.api.dataset_download_files('kaggle-dataset-url', path='/tmp', unzip=True)
+    kaggle.api.dataset_download_files(kaggle_dataset_url, path='/tmp', unzip=True)
 
     # Get the list of downloaded files
     files = os.listdir('/tmp')
@@ -58,7 +62,7 @@ def lambda_handler(event, context):
     # For each file, upload it to the S3 bucket
     for file in files:
         with open(f'/tmp/{file}', 'rb') as data:
-            s3.upload_fileobj(data, 'bucket-name', file)
+            s3.upload_fileobj(data, bucket_name, file)
 
     return {
         'statusCode': 200,
@@ -66,6 +70,15 @@ def lambda_handler(event, context):
     }
 
 {% endhighlight %}
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/9.jpg" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Necessário o preenchimento das variáveis de ambiente da lambda com o conteúdo de <code>kaggle.json</code>
+</div>
 
 ## Customizing Your Table of Contents
 {:data-toc-text="Customizing"}
