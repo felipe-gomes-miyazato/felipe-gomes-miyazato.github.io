@@ -73,11 +73,11 @@ def lambda_handler(event, context):
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/9.jpg" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/Captura de tela 2023-09-30 122908.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Necessário o preenchimento das variáveis de ambiente da lambda com o conteúdo de <code>kaggle.json</code>
+    Necessário o preenchimento das variáveis de ambiente da lambda com o conteúdo de <code>kaggle.json</code>. Instruções detalhadas disponíveis na documentação da API do kaggle.
 </div>
 
 ## Customizing Your Table of Contents
