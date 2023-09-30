@@ -31,9 +31,41 @@ Esta Lambda age apenas como uma proxy, para disponibilizar os dados em um bucket
     </div>
 </div>
 
-### Example of another Sub-Heading 1
+### Código da Lambda
 
-Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.
+{% highlight python linenos %}
+
+import boto3
+import kaggle
+import os
+
+def lambda_handler(event, context):
+    # Configure Kaggle
+    kaggle.api.authenticate()
+
+    # Download dataset from Kaggle
+    kaggle.api.dataset_download_files('kaggle-dataset-url', path='/tmp', unzip=True)
+
+    # Get the list of downloaded files
+    files = os.listdir('/tmp')
+
+    # Create a session using your user credentials
+    session = boto3.Session()
+
+    # Create an S3 client
+    s3 = session.client('s3')
+
+    # For each file, upload it to the S3 bucket
+    for file in files:
+        with open(f'/tmp/{file}', 'rb') as data:
+            s3.upload_fileobj(data, 'bucket-name', file)
+
+    return {
+        'statusCode': 200,
+        'body': f'Successfully uploaded {len(files)} files to S3 bucket'
+    }
+
+{% endhighlight %}
 
 ## Customizing Your Table of Contents
 {:data-toc-text="Customizing"}
