@@ -113,17 +113,32 @@ Configure the test JSON event like:
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/Captura de tela 2023-09-30 122908.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/Captura de tela 2023-09-30 143901.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
     Para usar o pacote requests, há uma <a href="https://github.com/keithrozario/Klayers/tree/master">layer pública disponível</a>.
 </div>
 
-## Customizing Your Table of Contents
-{:data-toc-text="Customizing"}
+### Permissionamento da Lambda
 
-If you want to learn more about how to customize the table of contents of your sidebar, you can check the [bootstrap-toc](https://afeld.github.io/bootstrap-toc/) documentation. Notice that you can even customize the text of the heading that will be displayed on the sidebar.
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-09-30 144938.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Para autorizar a lambda a inputar objetos no bucket é necessário acessar a configuração da role.
+</div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-09-30 145253.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Em seguida, acessar a configuração <mark>Add permissions</mark> > <mark>Attach policies</mark>.
+</div>
 
 ### Example of Sub-Heading 2
 
