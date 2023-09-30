@@ -25,7 +25,11 @@ Conteúdo: demostração de contrução de uma função AWS Lambda que transfere
 
 Esta Lambda age apenas como uma proxy, para disponibilizar os dados em um bucket S3. Para provisionar bastam as configurações padrão, neste caso com Python runtime.
 
-![Provisionando Lambda](<../assets/img/Captura de tela 2023-09-30 114229.png>)
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-09-30 114229.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
 
 ### Example of another Sub-Heading 1
 
