@@ -142,11 +142,11 @@ Configure the test JSON event like:
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/Captura de tela 2023-09-30 145253.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/Captura de tela 2023-09-30 201454.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Neste case, será adicionada a política <bold>AmazonS3FullAccess</bold>.
+    Neste case, será adicionada a política <b>AmazonS3FullAccess</b>.
 </div>
 
 ### Example of Sub-Heading 2
