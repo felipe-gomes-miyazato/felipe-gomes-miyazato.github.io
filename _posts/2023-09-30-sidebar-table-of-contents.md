@@ -12,14 +12,14 @@ toc:
 ---
 Este post mostra como construir e viabilizar um bom gerenciamento de pipeline de dados utilizando serviços serverless da AWS.
 
-## Parte 1: Coletando dados
-
 Requisitos:
 
 - Conta AWS
 - Conta kaggle
 
-Conteúdo: demostração de contrução de uma função AWS Lambda que transfere dados do kaggle para um bucket S3.
+## Parte 1: Coletando dados
+
+Demostração de contrução de uma função AWS Lambda que transfere dados do kaggle para um bucket S3.
 
 ### Provisionando Lambda
 
