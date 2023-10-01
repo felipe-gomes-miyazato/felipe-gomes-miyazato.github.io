@@ -189,10 +189,7 @@ Para configurar permissões de acesso para que um bucket do Amazon S3 seja públ
           "Resource":["arn:aws:s3:::your_bucket_name/*"]
         }
       ]
-    }
-    {% endhighlight %}
-
-7. Escolher "Salvar".
+    }{% endhighlight %}
 
 Essa política permite que qualquer pessoa leia os objetos no bucket.
 
