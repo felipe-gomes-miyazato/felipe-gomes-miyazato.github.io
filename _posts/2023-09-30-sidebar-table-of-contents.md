@@ -166,6 +166,36 @@ Configure the test JSON event like:
     Para este case, as configurações padrão funcionam.
 </div>
 
+### Permissionamento do bucket
+
+Para configurar permissões de acesso para que um bucket do Amazon S3 seja público (somente leitura), pode-se seguir estas etapas:
+
+1. Abrir o console do Amazon S3.
+2. No painel de navegação do Buckets, escolher o nome do seu bucket.
+3. Escolher a guia "Permissões".
+4. Retirar o bloqueio de acesso público
+5. Em "Gerenciamento de acesso ao bucket", escolher "Editar".
+6. Em "Política de bucket", inserir a seguinte política, substituindo `'your_bucket_name'`:
+
+  ```json
+  {
+    "Version":"2012-10-17",
+    "Statement":[
+      {
+        "Sid":"PublicReadGetObject",
+        "Effect":"Allow",
+        "Principal": "*",
+        "Action":["s3:GetObject"],
+        "Resource":["arn:aws:s3:::your_bucket_name/*"]
+      }
+    ]
+  }
+  ```
+
+7. Escolher "Salvar".
+
+Essa política permite que qualquer pessoa leia os objetos no bucket.
+
 ## Parte 2: Pipeline de Dados
 
 Jean shorts raw denim Vice normcore, art party High Life PBR skateboard stumptown vinyl kitsch. Four loko meh 8-bit, tousled banh mi tilde forage Schlitz dreamcatcher twee 3 wolf moon. Chambray asymmetrical paleo salvia, sartorial umami four loko master cleanse drinking vinegar brunch. <a href="https://www.pinterest.com">Pinterest</a> DIY authentic Schlitz, hoodie Intelligentsia butcher trust fund brunch shabby chic Kickstarter forage flexitarian. Direct trade <a href="https://en.wikipedia.org/wiki/Cold-pressed_juice">cold-pressed</a> meggings stumptown plaid, pop-up taxidermy. Hoodie XOXO fingerstache scenester Echo Park. Plaid ugh Wes Anderson, freegan pug selvage fanny pack leggings pickled food truck DIY irony Banksy.
