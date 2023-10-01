@@ -107,7 +107,7 @@ Configure the test JSON event like:
 {% highlight json linenos %}
 
 {
-  "kaggle_dataset_url": "https://www.kaggle.com/datasets/aliceadativa/queimadas-brasil-2020/download?datasetVersionNumber=2",
+  "kaggle_dataset_url": "<https://www.kaggle.com/datasets/aliceadativa/queimadas-brasil-2020/download?datasetVersionNumber=2>",
   "bucket_name": "seu-nome-bucket"
 }
 
@@ -177,20 +177,22 @@ Para configurar permissões de acesso para que um bucket do Amazon S3 seja públ
 5. Em "Gerenciamento de acesso ao bucket", escolher "Editar".
 6. Em "Política de bucket", inserir a seguinte política, substituindo `'your_bucket_name'`:
 
-  ```json
-  {
-    "Version":"2012-10-17",
-    "Statement":[
-      {
-        "Sid":"PublicReadGetObject",
-        "Effect":"Allow",
-        "Principal": "*",
-        "Action":["s3:GetObject"],
-        "Resource":["arn:aws:s3:::your_bucket_name/*"]
-      }
-    ]
-  }
-  ```
+    {% highlight json linenos %}
+
+    {
+      "Version":"2012-10-17",
+      "Statement":[
+        {
+          "Sid":"PublicReadGetObject",
+          "Effect":"Allow",
+          "Principal": "*",
+          "Action":["s3:GetObject"],
+          "Resource":["arn:aws:s3:::your_bucket_name/*"]
+        }
+      ]
+    }
+
+    {% endhighlight %}
 
 7. Escolher "Salvar".
 
