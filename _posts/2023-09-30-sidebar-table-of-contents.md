@@ -153,7 +153,7 @@ Configure the test JSON event like:
 
 ### Criar um bucket no Amazon S3
 
-https://s3.console.aws.amazon.com/s3/get-started
+<https://s3.console.aws.amazon.com/s3/get-started>
 
 ### Configurar o bucket
 
