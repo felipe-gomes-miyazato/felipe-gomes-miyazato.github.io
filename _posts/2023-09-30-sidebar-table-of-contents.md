@@ -205,7 +205,7 @@ Essa política permite que qualquer pessoa leia os objetos no bucket.
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/Captura de tela 2023-09-30 212902.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 105928.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -216,8 +216,48 @@ Essa política permite que qualquer pessoa leia os objetos no bucket.
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/Captura de tela 2023-10-01 120531.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 202812.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
+<div class="caption">
+    Configurações.
+</div>
+
+### Desenvolver ETL
+
+{% highlight python linenos %}
+import json
+import boto3
+import pandas as pd
+import random
+
+# 50% breaks
+if random.random() < 0.5:
+    raise Exception("Random exception")
+
+# Initialize boto3 client
+s3 = boto3.client('s3')
+
+def read_from_s3(bucket, key):
+    response = s3.get_object(Bucket=bucket, Key=key)
+    content = response['Body'].read().decode('utf-8')
+    return json.loads(content)
+
+def write_to_s3(bucket, key, data):
+    s3.put_object(Body=data, Bucket=bucket, Key=key)
+
+def process_data(input_bucket_name, output_bucket_name, input_key, output_key):
+    # Read JSON from S3
+    data = read_from_s3(input_bucket_name, input_key)
+
+    # Serialize the content from key "entries" in a dataframe
+    df = pd.DataFrame(data['entries'])
+
+    description = df.describe().to_csv()
+    write_to_s3(output_bucket_name, output_key, description)
+
+# Call the function with your bucket name and keys
+process_data('felipe-gomes-miyazato-bucket', 'dlakeanalytics', 'public_apis.json', 'describe_public_apis.csv')
+{% endhighlight %}
 
 ## Parte 3: Monitoramento
