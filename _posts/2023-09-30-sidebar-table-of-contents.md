@@ -15,11 +15,10 @@ Este post mostra como construir e viabilizar um bom gerenciamento de pipeline de
 Requisitos:
 
 - Conta AWS
-- Conta kaggle
 
 ## Parte 1: Coletando dados
 
-Demostração de contrução de uma função AWS Lambda que transfere dados do kaggle para um bucket S3.
+Demostração de contrução de uma função AWS Lambda que transfere dados de uma API pública para um bucket S3.
 
 ### Provisionando Lambda
 
@@ -27,87 +26,68 @@ Esta Lambda age apenas como uma proxy, para disponibilizar os dados em um bucket
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/Captura de tela 2023-09-30 114229.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 200328.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 
 ### Código e configuração da Lambda
 
 {% highlight python linenos %}
-
 import os
-import requests
 import boto3
+import requests
 from botocore.exceptions import NoCredentialsError
 
 def lambda_handler(event, context):
-    # Get the Kaggle dataset URL and bucket name from the event object
-    kaggle_dataset_url = event['kaggle_dataset_url']
-    bucket_name = event['bucket_name']
+    # URL da API pública "Public APIs"
+    url = "https://api.publicapis.org/entries"
 
-    # Get the Kaggle username and key from environment variables
-    kaggle_info = {
-        'username': os.environ.get('username'),
-        'key': os.environ.get('key')
-    }
+    # Fazer a solicitação GET
+    response = requests.get(url)
 
-    # Make the GET request
-    response = requests.get(kaggle_dataset_url, auth=(kaggle_info['username'], kaggle_info['key']))
-
-    # Check if the request was successful
+    # Verificar se a solicitação foi bem-sucedida
     if response.status_code == 200:
-        # Write the dataset to a file
-        with open('/tmp/dataset.zip', 'wb') as f:
-            f.write(response.content)
+        # Salvar os dados em um arquivo JSON
+        with open("/tmp/public_apis.json", "w") as f:
+            f.write(response.text)
         
-        # Create an S3 client
+        # Obter o nome do bucket do objeto do evento
+        bucket_name = event['bucket_name']
+
+        # Criar um cliente S3
         s3 = boto3.client('s3')
 
-        # Specify the file name
-        file_name = 'dataset.zip'
-
-        # Upload the file to S3
+        # Fazer upload do arquivo para S3
         try:
-            s3.upload_file('/tmp/' + file_name, bucket_name, file_name)
+            s3.upload_file("/tmp/public_apis.json", bucket_name, "public_apis.json")
             return {
                 'statusCode': 200,
-                'body': 'Successfully uploaded dataset to S3 bucket'
+                'body': 'Conjunto de dados carregado com sucesso no bucket S3'
             }
         except FileNotFoundError:
             return {
                 'statusCode': 404,
-                'body': 'The file was not found'
+                'body': 'O arquivo não foi encontrado'
             }
         except NoCredentialsError:
             return {
                 'statusCode': 401,
-                'body': 'Credentials not available'
+                'body': 'Credenciais não disponíveis'
             }
     else:
         return {
             'statusCode': response.status_code,
-            'body': 'Request to Kaggle API failed'
+            'body': 'Solicitação falhou'
         }
-
 {% endhighlight %}
-
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/Captura de tela 2023-09-30 122908.png" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Necessário o preenchimento das variáveis de ambiente da lambda com o conteúdo de <code>kaggle.json</code>. Instruções detalhadas disponíveis na documentação da API do kaggle.
-</div>
 
 ### Evento gatilho
 
-Configure the test JSON event like:
+Configurar o evento de teste com o JSON:
 
 {% highlight json linenos %}
 
 {
-  "kaggle_dataset_url": "<https://www.kaggle.com/datasets/aliceadativa/queimadas-brasil-2020/download?datasetVersionNumber=2>",
   "bucket_name": "seu-nome-bucket"
 }
 
@@ -126,7 +106,7 @@ Configure the test JSON event like:
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/Captura de tela 2023-09-30 144938.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 201151.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -135,7 +115,7 @@ Configure the test JSON event like:
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/Captura de tela 2023-09-30 145253.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 201325.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -144,7 +124,7 @@ Configure the test JSON event like:
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.html path="assets/img/Captura de tela 2023-09-30 201454.png" class="img-fluid rounded z-depth-1" %}
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 201511.png" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -210,7 +190,7 @@ Essa política permite que qualquer pessoa leia os objetos no bucket.
     </div>
 </div>
 <div class="caption">
-    Marcar <b>Read and write</b> em <mark><b>Data access permissions</b></mark>
+    Marcar <b>Read and write</b> em <mark><b>Data access permissions</b></mark> e as outras configurações deixar no padrão.
 </div>
 
 ### Criar bucket de dados processados
@@ -230,6 +210,14 @@ Essa política permite que qualquer pessoa leia os objetos no bucket.
 </div>
 <div class="caption">
     Para deixar o exemplo menos exaustivo, utilizar <b>Python Shell script editor</b> para criar o job.
+</div>
+
+### Catalogar com crawler
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 120531.png" class="img-fluid rounded z-depth-1" %}
+    </div>
 </div>
 
 ## Parte 3: Monitoramento
