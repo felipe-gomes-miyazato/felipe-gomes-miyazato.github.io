@@ -1,12 +1,6 @@
 github_users:
-  - torvalds
-  - alshedivat
+  - felipe-gomes-miyazato
 
 github_repos:
-  - alshedivat/al-folio
-  - twbs/bootstrap
-  - jekyll/jekyll
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - jpswalsh/academicons
-  - mathjax/MathJax
+  - felipe-gomes-miyazato/ifusp_introcaos
+  - felipe-gomes-miyazato/siops_web_scraping
