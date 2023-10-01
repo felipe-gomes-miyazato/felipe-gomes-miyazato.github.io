@@ -178,7 +178,6 @@ Para configurar permissões de acesso para que um bucket do Amazon S3 seja públ
 6. Em "Política de bucket", inserir a seguinte política, substituindo `'your_bucket_name'`:
 
     {% highlight json linenos %}
-
     {
       "Version":"2012-10-17",
       "Statement":[
@@ -191,7 +190,6 @@ Para configurar permissões de acesso para que um bucket do Amazon S3 seja públ
         }
       ]
     }
-
     {% endhighlight %}
 
 7. Escolher "Salvar".
