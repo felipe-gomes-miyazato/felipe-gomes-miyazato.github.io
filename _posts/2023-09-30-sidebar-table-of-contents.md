@@ -280,3 +280,36 @@ process_data('felipe-gomes-miyazato-bucket', 'dlakeanalytics', 'public_apis.json
 {% endhighlight %}
 
 ## Parte 3: Monitoramento
+
+### CloudWatch Dashboards
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 215426.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Usar a ferramenta de dashboards nativa do CoudWatch para monitoria.
+</div>
+
+### Monitorar função lambda
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 215709.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Adicionar widget de tabela de logs, configurada com o grupo de logs da lambda.
+</div>
+
+### Monitorar erros nos jobs do Glue
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 220104.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Adicionar widget de tabela de logs, configurada com o grupo de logs de erros do Glue.
+</div>
