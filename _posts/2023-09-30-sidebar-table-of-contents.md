@@ -313,3 +313,25 @@ process_data('felipe-gomes-miyazato-bucket', 'dlakeanalytics', 'public_apis.json
 <div class="caption">
     Adicionar widget de tabela de logs, configurada com o grupo de logs de erros do Glue.
 </div>
+
+### Ativar o Amazon CloudTrail
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 221405.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Para habilitar persistência dos logs crie uma Trail.
+</div>
+
+### Configurar o CloudTrail
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 222218.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Para cada grupo de log que seja necessária a persistência crie uma Trail e configure com o grupo.
+</div>
