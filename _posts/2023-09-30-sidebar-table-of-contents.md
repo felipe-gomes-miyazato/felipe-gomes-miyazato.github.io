@@ -223,7 +223,27 @@ Essa política permite que qualquer pessoa leia os objetos no bucket.
     Configurações.
 </div>
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 205915.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    Após rodar o crawler já é possível acessar a catalogação.
+</div>
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.html path="assets/img/Captura de tela 2023-10-01 210105.png" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
+<div class="caption">
+    E dar uma boa espiada na estrutura dos dados.
+</div>
+
 ### Desenvolver ETL
+
+Segue um exemplo minimalista de script de ETL em Python, que quebra 50% das vezes para ajudar a explorar as ferramentas de monitoramento na Parte 3.
 
 {% highlight python linenos %}
 import json
