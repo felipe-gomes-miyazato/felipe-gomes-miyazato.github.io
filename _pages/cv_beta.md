@@ -7,14 +7,8 @@ nav: true
 nav_order: 5
 ---
 
-LinkedIn:
+[LinkedIn]<https://www.linkedin.com/in/felipe-gomes-miyazato/>
 
-<https://www.linkedin.com/in/felipe-gomes-miyazato/>
+[En]<https://felipe-gomes-miyazato.github.io/assets/pdf/2023-09-01%20CV-en%20Felipe%20Gomes%20Miyazato.pdf>
 
-En:
-
-<https://felipe-gomes-miyazato.github.io/assets/pdf/2023-09-01 CV-en Felipe Gomes Miyazato.pdf>
-
-Pt-br:
-
-<https://felipe-gomes-miyazato.github.io/assets/pdf/2023-09-01 CV-pt Felipe Gomes Miyazato.pdf>
+[Pt-br]<https://felipe-gomes-miyazato.github.io/assets/pdf/2023-09-01%20CV-pt%20Felipe%20Gomes%20Miyazato.pdf>
