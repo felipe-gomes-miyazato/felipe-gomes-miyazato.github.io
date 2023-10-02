@@ -5,7 +5,6 @@ date: 2023-09-30 #10:45:00-0400
 description: um exemplo não exaustivo de implementação de processo de ingestão de dados
 tags: serverless dados monitoramento AWS
 categories: pt-br
-giscus_comments: true
 related_posts: false
 toc:
   sidebar: left
