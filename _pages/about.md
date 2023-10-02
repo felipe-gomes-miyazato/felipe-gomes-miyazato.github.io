@@ -19,4 +19,5 @@ selected_papers: false #true # includes a list of papers marked as "selected={tr
 social: true  # includes social icons at the bottom of the page
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com).
+<!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). -->
+Sou físico formado no IFUSP. Trabalho a 5 anos principalmente com análise e engenharia de dados. Atualmente estou direcionando minha formação para trabalhar com ciência de dados. Me interessam pesquisas em aplicações de machine learning.
