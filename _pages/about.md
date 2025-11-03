@@ -20,4 +20,4 @@ social: true  # includes social icons at the bottom of the page
 ---
 
 <!-- Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). -->
-Sou físico formado no IFUSP. Trabalho a 5 anos principalmente com análise e engenharia de dados. Atualmente estou direcionando minha formação para trabalhar com ciência de dados. Me interessam pesquisas em aplicações de machine learning.
+A Data Specialist with the analytical foundation and rigorous problem-solving skills of a former Physicist. I design, build, and optimize the full data lifecycle: from scalable cloud ETL pipelines and data architecture design to deep analytical modeling and impactful Business Intelligence solutions. My focus is transforming complex data into clear, measurable results.
