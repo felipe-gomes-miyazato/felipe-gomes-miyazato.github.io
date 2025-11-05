@@ -32,7 +32,7 @@ nav_order: 3
 
 {% endfor %}
 {% endif %}
-
+<!-- 
 ---
 <div class="repositories d-flex flex-wrap flex-md-row flex-column justify-content-between align-items-center">
   {% for user in site.data.repositories.github_users %}
@@ -40,4 +40,4 @@ nav_order: 3
   {% endfor %}
 </div>
 
-{% endif %}
+{% endif %} -->
