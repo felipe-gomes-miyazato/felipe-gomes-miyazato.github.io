@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: Physicist and data specialist. felipe.miyazato@outlook.com
+subtitle: Physicist and data specialist. felipe.miyazato@gmail.com
 
 profile:
   align: right
