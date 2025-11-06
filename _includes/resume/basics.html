@@ -10,7 +10,7 @@
     <td class="p-1 pr-2 font-weight-bold"><b>{{ content[0] | capitalize | replace: "Linkedin", "LinkedIn" | replace: "Github", "GitHub" }}</b></td>
     <td class="p-1 pl-2 font-weight-light text">
       {% if content[0] == "url" or content[0] == "linkedin" or content[0] == "github" %}
-      <a href="{{ content[1] }}" target="_blank" rel="noopener noreferrer">{{ content[0] | replace: "linkedin", "LinkedIn" | replace: "github", "GitHub" | capitalize }}</a>
+      <a href="{{ content[1] }}" target="_blank" rel="noopener noreferrer">{{ content[1] }}</a>
       {% elsif content[0] == "email" %}
       <a href="mailto:{{ content[1] }}" target="_blank">{{ content[1] }}</a>
       {% elsif content[0] == "phone" %}
