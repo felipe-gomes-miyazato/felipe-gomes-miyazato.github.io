@@ -131,10 +131,18 @@
   ],
   "education": [
     {
+      "institution": "Ciências Moleculares (USP)",
+      "area": "Computational physics and artificial intelligence",
+      "studyType": "Interdisciplinary studies and scientific research",
+      "startDate": "2015",
+      "endDate": "2018",
+      "location": "São Paulo, Brazil"
+    },
+    {
       "institution": "Instituto de Física da Universidade de Sao Paulo (IFUSP)",
       "area": "Physics",
       "studyType": "Bachelor's",
-      "startDate": "2016",
+      "startDate": "2015",
       "endDate": "2020",
       "location": "São Paulo, Brazil"
     }
