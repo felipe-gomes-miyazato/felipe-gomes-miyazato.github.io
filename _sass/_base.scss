@@ -239,21 +239,20 @@ blockquote {
     padding-bottom: 0;
     padding-top: 0;
     font-size: 1.7rem;
-
+  
     a {
       i::before {
-        color: var(--global-text-color);
+        color: var(--global-link-color);
         transition-property: all 0.2s ease-in-out;
       }
-
+  
       &:hover {
         i::before {
-          color: var(--global-theme-color);
+          color: var(--global-link-hover-color);
         }
       }
     }
-  }
-}
+  }}
 
 .navbar-toggler {
   .icon-bar {
@@ -316,20 +315,16 @@ blockquote {
 
     a {
       i::before {
-        color: var(--global-text-color);
+        color: var(--global-link-color);
         transition-property: all 0.2s ease-in-out;
       }
 
       &:hover {
         i::before {
-          color: var(--global-theme-color);
+          color: var(--global-link-hover-color);
         }
       }
     }
-  }
-
-  .contact-note {
-    font-size: 0.8rem;
   }
 }
 
