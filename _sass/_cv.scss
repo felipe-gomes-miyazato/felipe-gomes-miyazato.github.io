@@ -34,6 +34,18 @@ a.btncv:hover {
 }
 
 /*****************************
+ * CV BASICS styles
+ *****************************/
+
+.table-cv .text {
+  color: var(--global-text-color);
+}
+
+.table-cv .font-weight-bold b {
+  color: var(--global-theme-color);
+}
+
+/*****************************
  * CV TIME_TABLE styles
  *****************************/
 
