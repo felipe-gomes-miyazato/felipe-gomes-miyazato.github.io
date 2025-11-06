@@ -1,6 +1,7 @@
 <table class="table table-cv table-sm table-borderless table-responsive">
   <tbody>
-    {% for skill in data %}
+    {% assign sorted_skills = data | sort: 'years' | reverse %}
+    {% for skill in sorted_skills %}
     <tr>
       <td class="p-1 pr-2 font-weight-bold text-theme"><b>{{ skill.name }}</b></td>
       <td class="p-1 pl-2 font-weight-light">{{ skill.years }} years</td>
