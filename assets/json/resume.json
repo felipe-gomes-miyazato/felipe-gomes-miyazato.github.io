@@ -182,8 +182,10 @@
     { "name": "Data Science" },
     { "name": "Machine Learning" },
     { "name": "Programming" },
+    { "name": "Data Engineering" },
     { "name": "Music" },
-    { "name": "Travel" },
-    { "name": "Languages" }
+    { "name": "Sports" },
+    { "name": "Languages" },
+    { "name": "Culture" }
   ]
 }

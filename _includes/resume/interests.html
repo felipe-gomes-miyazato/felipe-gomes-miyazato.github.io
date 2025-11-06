@@ -1,29 +1,31 @@
-<div class="list-groups">
-    {% for content in data[1] %}
-    <div class="list-group col-md-6">
-      <table class="table-cv list-group-table">
-        <tbody>
-          <tr>
-            {% if content.icon %}
-            <td class="list-group-category-icon"><i class="{{ content.icon }}"></i></td> 
-            {% else %}
-            <td class="list-group-category-icon"></td>
-            {% endif %}
-            <!-- Calculate colspan number for category title -->
-            {% assign i = 1 %}
-            {% for item in content.items %}
-              {% assign i = i | plus:1 %}
-            {% endfor %}
-            <td colspan="{{ i }}" class="list-group-category">{{ content.name }}</td>
-          </tr>
-          {% for item in content.keywords %}
-          <tr>
-            <td></td>
-            <td class="list-group-name"><b>{{ item }}</b></td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-    {% endfor %}
+{% assign interests = data[1] %}
+{% assign interests_size = interests.size %}
+{% assign half_size = interests_size | divided_by: 2 %}
+{% if interests_size | modulo: 2 != 0 %}
+  {% assign half_size = half_size | plus: 1 %}
+{% endif %}
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table table-cv table-sm table-borderless table-responsive">
+      <tbody>
+        {% for interest in interests limit: half_size %}
+        <tr>
+          <td class="p-1 pr-2 font-weight-bold text-theme"><b>{{ interest.name }}</b></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </div>
+  <div class="col-md-6">
+    <table class="table table-cv table-sm table-borderless table-responsive">
+      <tbody>
+        {% for interest in interests offset: half_size %}
+        <tr>
+          <td class="p-1 pr-2 font-weight-bold text-theme"><b>{{ interest.name }}</b></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
