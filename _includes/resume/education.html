@@ -4,7 +4,7 @@
   <li class="list-group-item">
         <div class="row">
           <div class="col-12 d-flex justify-content-between">
-            <h6 class="title font-weight-bold"><a href="{{ content.url }}">{{content.studyType}}</a></h6>
+            <h6 class="title font-weight-bold text-theme">{{content.studyType}}</h6>
             {% if content.startDate and content.startDate!="" %}
             {% assign startDate = content.startDate | split: "-" | slice: 0,2 | join: "." %}{% assign endDate   = content.endDate   | split: "-" | slice: 0,2 | join: "." | default: "Present" %}{% assign date = startDate | append: " - " %}{% assign date = date | append: endDate %}
             {% else %}
