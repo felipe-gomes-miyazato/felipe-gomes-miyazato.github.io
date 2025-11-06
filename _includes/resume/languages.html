@@ -1,27 +1,10 @@
-<div class="list-groups">
-    {% for content in data[1] %}
-    <div class="list-group col-md-6">
-      <table class="table-cv list-group-table">
-        <tbody>
-          <tr>
-            {% if content.icon %}
-            <td class="list-group-category-icon"><i class="{{ content.icon }}"></i></td> 
-            {% else %}
-            <td class="list-group-category-icon"></td>
-            {% endif %}
-            <!-- Calculate colspan number for category title -->
-            {% assign i = 1 %}
-            {% for item in content.items %}
-              {% assign i = i | plus:1 %}
-            {% endfor %}
-            <td colspan="{{ i }}" class="list-group-category">{{ content.language }}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td class="list-group-name"><b>{{ content.fluency }}</b></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<table class="table table-cv table-sm table-borderless table-responsive">
+  <tbody>
+    {% for lang in data %}
+    <tr>
+      <td class="p-1 pr-2 font-weight-bold text-theme"><b>{{ lang.language }}</b></td>
+      <td class="p-1 pl-2 font-weight-light">{{ lang.fluency }}</td>
+    </tr>
     {% endfor %}
-  </div>
+  </tbody>
+</table>
